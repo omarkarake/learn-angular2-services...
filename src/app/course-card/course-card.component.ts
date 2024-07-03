@@ -27,6 +27,7 @@ export class CourseCardComponent implements OnInit {
   @Input()
   cardIndex: number;
 
+  //this will be an event for changin the value of an input, we will subscribe to this course changed event
   @Output("courseChanged")
   courseEmitter = new EventEmitter<Course>();
 
@@ -35,8 +36,9 @@ export class CourseCardComponent implements OnInit {
   ngOnInit() {
     console.log("cards injection service: ", this.coursesService);
   }
-
+  //   here we receive the description as string in this function
   onSaveClicked(description: string) {
+    // here we get course and only change the description
     this.courseEmitter.emit({ ...this.course, description });
   }
 }
