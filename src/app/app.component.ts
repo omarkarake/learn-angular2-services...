@@ -20,11 +20,13 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  courses = COURSES;
+  courses;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get("/api/courses").subscribe((val) => console.log(val));
+    this.http
+      .get("/api/courses")
+      .subscribe((courses) => (this.courses = courses));
   }
 }
